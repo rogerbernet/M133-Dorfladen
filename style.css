@@ -1,0 +1,13 @@
+.topnav {
+    background-color: green;
+}
+.navlink {
+    color: white;
+}
+.mainbody {
+    background-color: yellowgreen;
+    height: 50cm;
+}
+.title{
+    background-image: url("/img/Title.jpg");
+}
