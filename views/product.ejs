@@ -1,0 +1,12 @@
+<%- await include('views/header.ejs' %>
+<div>
+    <% console.log("2") %>
+<img src="../assets/<%= items[itemId].imageName%>">
+<h6> <%= items[itemId].productName </h6>
+<br>
+<p> <%= items[itemId].specialOffer %></p>
+<br>
+<p> <%= items[itemId].description %></p>
+
+</div>
+<%- await include('views/footer.ejs'); %>
