@@ -1,0 +1,12 @@
+button{
+    background-color: lightgreen;
+    border-radius: 12px;
+    border-style: hidden;
+    float: left;
+    margin: 20px;
+    
+
+}
+body{
+    background-color: greenyellow;
+}

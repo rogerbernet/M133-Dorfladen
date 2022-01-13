@@ -1,12 +1,30 @@
-<%- await include('views/header.ejs' %>
-<div>
-    <% console.log("2") %>
-<img src="../assets/<%= items[itemId].imageName%>">
-<h6> <%= items[itemId].productName </h6>
-<br>
-<p> <%= items[itemId].specialOffer %></p>
-<br>
+<%- await include('views/header.ejs', {title: items[itemId].productName}) %>
+<style>
+    body{
+        background-color: greenyellow;
+    }
+    .produkt{
+        align-self: center;
+        background-color: white;
+        border: lightgray;
+        height: 5000px;
+        width: 500px;
+        
+    }
+</style>
+<div class="produkt">
+<img src="/assets/<%= items[itemId].imageName %>">
+<h4> <%= items[itemId].productName %></h4>
+
+<p style="color: green;"> <%= items[itemId].specialOffer %>.-</p>
+
 <p> <%= items[itemId].description %></p>
+<form action="/addToCart" method="post">
+<input type="number" value="<%= itemId %>" hidden>
+<p>Count:</p>
+<input type="number" name="count" value="1" required>
+<button>Add to Cart</button>
+</form>
 
 </div>
 <%- await include('views/footer.ejs'); %>

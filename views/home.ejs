@@ -1,6 +1,5 @@
-<%- await include('views/header.ejs', { title: 'Welcome' }); %>
+<%- await include('views/header.ejs', { title: 'Home' }); %>
 <body>
-<link rel="stylesheet" href="style.css">
 <style>
 button{
     background-color: lightgreen;
@@ -8,15 +7,15 @@ button{
     border-style: hidden;
     float: left;
     margin: 20px;
+    width: 200px;
+    
     
 
 }
 body{
     background-color: greenyellow;
 }
-
 </style>
-
 <div>
     <% console.log("home is loaded"); %>
     <% for (let i = 0; i < items.length; i++) {  %>
@@ -24,7 +23,6 @@ body{
             <input type="text" name="productId" value="<%= i %>" hidden>
             <button class="product" type="submit" > 
                 <img src="../assets/<%= items[i].imageName %>" height="120" width="120">
-                <% console.log(items[i].imageName) %>
                 <br>
                 <%= items[i].productName %>
                 <br>

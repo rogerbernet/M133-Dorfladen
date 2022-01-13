@@ -22,7 +22,7 @@ router.post("/product", async (context) =>{
     const body = await context.request.body().value
     const productId = body.get("productId")
     console.log(productId)
-    context.response.body = await renderFileToString(Deno.cwd() + "/views/product.ejs", {productId: productId, items: items})
+    context.response.body = await renderFileToString(Deno.cwd() + "/views/product.ejs", {itemId: productId, items: items})
     context.response.type = "html"
     }
     catch (error)
