@@ -1,7 +1,7 @@
 <%- await include('views/header.ejs', { title: 'Home' }); %>
 <body>
 <style>
-button{
+.product{
     background-color: lightgreen;
     border-radius: 12px;
     border-style: hidden;
@@ -16,11 +16,17 @@ body{
     background-color: greenyellow;
 }
 </style>
+<div style="position: absolute; float:right; width: 60px; background-color: white;">
+<form method="post" action="/cart">
+    <button type="submit">Cart</button>
+</form>
+</div>
+<br>
 <div>
     <% console.log("home is loaded"); %>
     <% for (let i = 0; i < items.length; i++) {  %>
         <form action="/product" method="post">
-            <input type="text" name="productId" value="<%= i %>" hidden>
+            <input type="text" name="itemId" value="<%= i %>" hidden>
             <button class="product" type="submit" > 
                 <img src="../assets/<%= items[i].imageName %>" height="120" width="120">
                 <br>

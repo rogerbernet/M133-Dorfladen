@@ -20,7 +20,7 @@
 
 <p> <%= items[itemId].description %></p>
 <form action="/addToCart" method="post">
-<input type="number" value="<%= itemId %>" hidden>
+<input type="number" name="itemId" value="<%= itemId %>" hidden>
 <p>Count:</p>
 <input type="number" name="count" value="1" required>
 <button>Add to Cart</button>
