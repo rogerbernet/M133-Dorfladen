@@ -1,0 +1,34 @@
+<%- await include('views/header.ejs', { title: 'Bestellung abgeschlossen!' }); %>
+<body>
+<style>
+button{
+    background-color: lightgreen;
+    border-radius: 12px;
+    border-style: hidden;
+    float: left;
+    margin: 20px;
+    width: 200px;
+    
+    
+
+}
+body{
+    background-color: greenyellow;
+}
+</style>
+    <div>
+        <h1>Ihre Bestellung wurde abgeschlossen!</h1>
+        <br>
+        <h3>Geschätzter Kunde <%= fullname %> ihre Bestellung wurde erfolgreich abgeschlossen!</h3>
+        <br>
+        <p>Ihnen wurde ein E-Mail an <%= email %>. Bitte bestätigen sie dieses damit wir Ihnen ihre Produkte zu folgender Adresse senden können.</p>
+        <br>
+        <p><%= street %></p>
+        <p><%= adress %></p>
+
+        <h2>Vielen Dank für Ihre Bestellung!</h2>
+  
+    </div>
+</body>
+
+<%- await include('views/footer.ejs'); %>

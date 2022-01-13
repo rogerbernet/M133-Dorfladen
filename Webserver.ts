@@ -31,6 +31,37 @@ router.post("/product", async (context) =>{
     }
 })
 
+router.post("/enterCustomerInfo", async (context) =>{
+    try{
+    const body = await context.request.body().value
+
+    context.response.body = await renderFileToString(Deno.cwd() + "/views/customerInfo.ejs", { })
+    context.response.type = "html"
+    }
+    catch (error)
+    {
+        console.log(error)
+    }
+})
+
+router.post("/terminateOrder", async (context) =>{
+    try{
+    const body = await context.request.body().value;
+    const fullname = body.get("customerName");
+    const email = body.get("email");
+    const street = body.get("street");
+    const adress = body.get("adress");
+
+
+    context.response.body = await renderFileToString(Deno.cwd() + "/views/terminateOrder.ejs", {fullname: fullname, email: email, street: street, adress: adress})
+    context.response.type = "html"
+    }
+    catch (error)
+    {
+        console.log(error)
+    }
+})
+
 
 const app = new Application()
 app.use(router.routes())
