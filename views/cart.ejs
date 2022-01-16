@@ -1,12 +1,29 @@
 <%- await include('views/header.ejs', { title: 'Cart' }); %>
-<style>
-body{
-    background-color: greenyellow;
-}
-</style>
-<body>
+    <style>
+        body {
+            background-color: greenyellow;
+        }
+    </style>
 
-</body>
+    <body>
+        <table>
+            <tr>
+                <th>Produktname</th>
+                <th>Menge</th>
+                <th>Preis</th>
+            </tr>
+            <% for(const [key, value] of itemsInCart.entries()) {  %>
+                <tr>
+                    <td><%= value.itemName %></td>
+                    <td> <%= value.itemCart %> </td>
+                    <td> <%= Math.round(parseFloat(value.itemOffer * value.itemCart)*100)/100; %></td>
+                </tr>
+            <% } %>
+        </table>
+        <br>
+        <form action="/enterCustomerInfo" method="post">
+            <input type="submit" value="checkout">
+        </form>
+    </body>
 
-
-<%- await include('views/footer.ejs'); %>
+<%- await include('views/footer.ejs') %>

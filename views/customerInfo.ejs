@@ -1,45 +1,47 @@
 <%- await include('views/header.ejs', { title: 'Kundeninformationen' }); %>
-<body>
-<style>
-button{
-    background-color: lightgreen;
-    border-radius: 12px;
-    border-style: hidden;
-    float: left;
-    margin: 20px;
-    width: 200px;
-    
-}
-body{
-    background-color: greenyellow;
-}
-</style>
-<div>
-        <form action="/terminateOrder" method="post">
 
-            <label for="customerName">Vorname & Name:</label>
-            <br>
-            <input type="text" name="customerName">
-            <br>
+    <body>
+        <style>
+            button {
+                background-color: lightgreen;
+                border-radius: 12px;
+                border-style: hidden;
+                float: left;
+                margin: 20px;
+                width: 200px;
 
-            <label for="email">E-Mail:</label>
-            <br>
-            <input type="email" name="email">
-            <br>
+            }
 
-            <label for="street">Strasse:</label>
-            <br>
-            <input type="text" name="street">
-            <br>
+            body {
+                background-color: greenyellow;
+            }
+        </style>
+        <div>
+            <form action="/terminateOrder" method="post">
 
-            <label for="adress">Ort & Platz:</label>
-            <br>
-            <input type="text" name="adress">
-            <br>
+                <label for="customerName">Vorname & Name:</label>
+                <br>
+                <input type="text" name="customerName">
+                <br>
 
-            <input type="submit" value="Senden">
-        </form>
-    </div>
-</body>
+                <label for="email">E-Mail:</label>
+                <br>
+                <input type="email" name="email">
+                <br>
 
-<%- await include('views/footer.ejs'); %>
+                <label for="street">Strasse:</label>
+                <br>
+                <input type="text" name="street">
+                <br>
+
+                <label for="adress">Ort & Platz:</label>
+                <br>
+                <input type="text" name="adress">
+                <br>
+
+                <input type="submit" value="Senden">
+            </form>
+        </div>
+    </body>
+
+    <%- await include('views/footer.ejs'); %>
