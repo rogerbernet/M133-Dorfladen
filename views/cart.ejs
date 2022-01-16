@@ -1,8 +1,9 @@
-<%- await include('views/header.ejs', { title: 'Cart' }); %>
+<%- await include('views/header.ejs', { title: 'Cart' }) %>
     <style>
         body {
-            background-color: greenyellow;
+            background-color: #e6ffe6;
         }
+
     </style>
 
     <body>
@@ -12,23 +13,27 @@
                 <th>Menge</th>
                 <th>Preis</th>
             </tr>
+            <% let total = 0 %>
             <% for(const [key, value] of itemsInCart.entries()) { %>
-                <tr>
-                    <td>
+                <tr style="margin-left: 20px;">
+                    <td >
                         <%= value.itemName %>
                     </td>
-                    <td>
+                    <td >
                         <%= value.itemCart %>
                     </td>
                     <td>
-                        <%= Math.round(parseFloat(value.itemOffer * value.itemCart)*100)/100; %>
+                        <%= Math.round(parseFloat(value.itemOffer * value.itemCart)*100)/100 %>
+                        <% total += Math.round(parseFloat(value.itemOffer * value.itemCart)*100)/100 %>
                     </td>
                 </tr>
                 <% } %>
         </table>
+        <hr>
+        <p style="margin-left: 20px;">Total: <%= total %></p>
         <br>
         <form action="/enterCustomerInfo" method="post">
-            <input type="submit" value="checkout">
+            <input style="margin-left: 20px;" type="submit" value="checkout">
         </form>
     </body>
 

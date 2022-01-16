@@ -10,14 +10,28 @@
                 margin: 20px;
                 width: 200px;
             }
+            .cart{
+                position: absolute; 
+                float:right;
+                width: 50px;
+                height: 40px;
+                background-color: #006600;
+                border-radius: 26px;
+                border: hidden;
+                color: white;
+                font: bold;
+                margin-left: 20px;
+            }
 
             body {
-                background-color: greenyellow;
+                background-color: #e6ffe6;
+                
             }
+
         </style>
-        <div style="position: absolute; float:right; width: 60px; background-color: greenyellow;">
+        <div>
             <form method="post" action="/cart">
-                <button type="submit">Cart</button>
+                <button class="cart"type="submit">Cart</button>
             </form>
         </div>
         <br>
@@ -28,12 +42,12 @@
                     <button class="product" type="submit">
                         <img src="../assets/<%= items[i].imageName %>" height="120" width="120">
                         <br>
-                        <%= items[i].productName %>
-                            <br>
-                            <a style="color: green">
+                        <a style="font: bold;"><%= items[i].productName %></a>
+                        <br>
+                            <a style="color: green; font: bolt;">
                                 <%= items[i].specialOffer %>.-
                             </a>
-                            <del style="color: darkred;">
+                            <del style="color: darkred; font: bolt;">
                                 <%= items[i].normalPrice %>.-
                             </del>
                     </button>

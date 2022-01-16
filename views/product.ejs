@@ -1,7 +1,7 @@
 <%- await include('views/header.ejs', {title: items[itemId].productName}) %>
     <style>
         body {
-            background-color: greenyellow;
+            background-color: #e6ffe6;
         }
 
         .produkt {
@@ -10,24 +10,26 @@
             border: lightgray;
             height: 500px;
             width: 500px;
-            background-color: greenyellow;
+            background-color: #99ff99;
+            border-radius: 12px;
+            
         }
     </style>
     <div class="produkt">
-        <img src="/assets/<%= items[itemId].imageName %>" width="200px" height="200px">
-        <h4>
+        <img src="/assets/<%= items[itemId].imageName %>" width="200px" height="200px" style="margin-left: 20px; margin-top: 20px;"  >
+        <h4 style="margin-left: 20px;">
             <%= items[itemId].productName %>
         </h4>
 
-        <p style="color: green;">
+        <p style="color: green; margin-left: 20px; font: bold;">
             <%= items[itemId].specialOffer %>.-
         </p>
 
-        <p>
+        <p style="margin-left: 20px;">
             <%= items[itemId].description %>
         </p>
-        <form action="/addToCart" method="post">
-            <input type="number" name="itemId" value="<%= itemId %>" hidden>
+        <form action="/addToCart" method="post" style="margin-left: 20px;">
+            <input type="number" name="itemId" value="<%= itemId %>" style="margin-left: 20px;" hidden>
             <p>Count:</p>
             <input type="number" name="count" value="1" required>
             <button>Add to Cart</button>
