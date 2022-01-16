@@ -22,24 +22,23 @@
         </div>
         <br>
         <div>
-            <% console.log("home is loaded"); %>
-                <% for (let i=0; i < items.length; i++) { %>
-                    <form action="/product" method="post">
-                        <input type="text" name="itemId" value="<%= i %>" hidden>
-                        <button class="product" type="submit">
-                            <img src="../assets/<%= items[i].imageName %>" height="120" width="120">
+            <% for (let i=0; i < items.length; i++) { %>
+                <form action="/product" method="post">
+                    <input type="text" name="itemId" value="<%= i %>" hidden>
+                    <button class="product" type="submit">
+                        <img src="../assets/<%= items[i].imageName %>" height="120" width="120">
+                        <br>
+                        <%= items[i].productName %>
                             <br>
-                            <%= items[i].productName %>
-                                <br>
-                                <a style="color: green">
-                                    <%= items[i].specialOffer %>.-
-                                </a>
-                                <del style="color: darkred;">
-                                    <%= items[i].normalPrice %>.-
-                                </del>
-                        </button>
-                    </form>
-                    <% } %>
+                            <a style="color: green">
+                                <%= items[i].specialOffer %>.-
+                            </a>
+                            <del style="color: darkred;">
+                                <%= items[i].normalPrice %>.-
+                            </del>
+                    </button>
+                </form>
+                <% } %>
         </div>
     </body>
 

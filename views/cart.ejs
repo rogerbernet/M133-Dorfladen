@@ -12,13 +12,19 @@
                 <th>Menge</th>
                 <th>Preis</th>
             </tr>
-            <% for(const [key, value] of itemsInCart.entries()) {  %>
+            <% for(const [key, value] of itemsInCart.entries()) { %>
                 <tr>
-                    <td><%= value.itemName %></td>
-                    <td> <%= value.itemCart %> </td>
-                    <td> <%= Math.round(parseFloat(value.itemOffer * value.itemCart)*100)/100; %></td>
+                    <td>
+                        <%= value.itemName %>
+                    </td>
+                    <td>
+                        <%= value.itemCart %>
+                    </td>
+                    <td>
+                        <%= Math.round(parseFloat(value.itemOffer * value.itemCart)*100)/100; %>
+                    </td>
                 </tr>
-            <% } %>
+                <% } %>
         </table>
         <br>
         <form action="/enterCustomerInfo" method="post">
@@ -26,4 +32,4 @@
         </form>
     </body>
 
-<%- await include('views/footer.ejs') %>
+    <%- await include('views/footer.ejs') %>

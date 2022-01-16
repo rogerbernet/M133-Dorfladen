@@ -14,24 +14,24 @@
         }
     </style>
     <div class="produkt">
-        <!img src="/assets/<%= items[itemId].imageName %>">
-            <h4>
-                <%= items[itemId].productName %>
-            </h4>
+        <img src="/assets/<%= items[itemId].imageName %>" width="200px" height="200px">
+        <h4>
+            <%= items[itemId].productName %>
+        </h4>
 
-            <p style="color: green;">
-                <%= items[itemId].specialOffer %>.-
-            </p>
+        <p style="color: green;">
+            <%= items[itemId].specialOffer %>.-
+        </p>
 
-            <p>
-                <%= items[itemId].description %>
-            </p>
-            <form action="/addToCart" method="post">
-                <input type="number" name="itemId" value="<%= itemId %>" hidden>
-                <p>Count:</p>
-                <input type="number" name="count" value="1" required>
-                <button>Add to Cart</button>
-            </form>
+        <p>
+            <%= items[itemId].description %>
+        </p>
+        <form action="/addToCart" method="post">
+            <input type="number" name="itemId" value="<%= itemId %>" hidden>
+            <p>Count:</p>
+            <input type="number" name="count" value="1" required>
+            <button>Add to Cart</button>
+        </form>
 
     </div>
     <%- await include('views/footer.ejs'); %>

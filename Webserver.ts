@@ -1,5 +1,5 @@
 "use strict"
-import { Application, Router } from "./deps.ts"
+import { Application, send, Router } from "./deps.ts"
 import { renderFileToString } from "./deps.ts"
 
 const items = JSON.parse(Deno.readTextFileSync(Deno.cwd() + "/assets/products.json"));
@@ -8,8 +8,6 @@ const router = new Router()
 
 router.get("/", async (context) => {
     try {
-
-        console.log("\nHome.True")
         context.response.body = await renderFileToString(Deno.cwd() + "/views/home.ejs", { items: items })
         context.response.type = "html"
     }
@@ -21,7 +19,6 @@ router.post("/product", async (context) => {
     try {
         const body = await context.request.body().value
         const itemId = body.get("itemId")
-        console.log(itemId)
         context.response.body = await renderFileToString(Deno.cwd() + "/views/product.ejs", { itemId: itemId, items: items })
         context.response.type = "html"
     }
@@ -34,7 +31,6 @@ router.post("/addToCart", async (context) => {
         const body = await context.request.body().value;
         let itemId = body.get("itemId")
         let count = body.get("count")
-        console.log("CookieId " + itemId)
         context.cookies.set(itemId, count)
         context.response.body = await renderFileToString(Deno.cwd() + "/views/home.ejs", { items: items })
         context.response.type = "html"
@@ -47,12 +43,11 @@ router.post("/cart", async (context) => {
     try {
 
         let itemsInCart = new Map();
-        for(let i = 0; i< items.length; i++){
-            if(context.cookies.get(String(i))){
-                itemsInCart.set(String(i), {itemName: items[i].productName, itemCart: context.cookies.get(String(i)), itemOffer: items[i].specialOffer});
+        for (let i = 0; i < items.length; i++) {
+            if (context.cookies.get(String(i))) {
+                itemsInCart.set(String(i), { itemName: items[i].productName, itemCart: context.cookies.get(String(i)), itemOffer: items[i].specialOffer });
             }
         }
-        console.log(itemsInCart)
         context.response.body = await renderFileToString(Deno.cwd() + "/views/cart.ejs", { itemsInCart: itemsInCart })
         context.response.type = "html"
     }
@@ -94,5 +89,11 @@ router.post("/terminateOrder", async (context) => {
 const app = new Application()
 app.use(router.routes())
 app.use(router.allowedMethods())
+
+app.use(async (context) => {
+    await send(context, context.request.url.pathname, {
+        root: `${Deno.cwd()}`,
+    });
+});
 
 await app.listen({ port: 8000 })
